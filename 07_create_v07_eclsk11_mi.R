@@ -1,0 +1,317 @@
+################################################
+################################################
+##                                            ##
+## PROGRAM NAME: 07_create_v07_eclsk11_mi.R   ##
+## AUTHOR: KW/GW                              ##
+## PURPOSE: multiply impute missing data      ##
+##                                            ##
+################################################
+################################################
+
+##### LOAD LIBRARIES #####
+rm(list=ls())
+library(haven)
+library(foreign)
+library(dplyr)
+library(tidyr)
+library(Hmisc)
+library(mice)
+library(RfEmpImp)
+library(randomForest)
+
+startTime<-Sys.time()
+
+##### DEFINE SCRIPT PARAMETERS #####
+nmi<-5
+
+##### LOAD ECLS-K #####
+eclsk<-read.dta("C:\\Users\\Geoffrey Wodtke\\Desktop\\projects\\nhood_schl_gaps\\data\\eclsk11\\v06_eclsk11_si.dta")
+
+##### DEFINE VARIABLE SETS #####
+vars.meta<-c(
+  "childid",
+  "parentid",
+  "schlid",
+  "strat",
+  "psu",
+  "sampwt")
+
+vars.base<-c(
+  "rdtheta1",
+  "mththeta1",
+  "gender",
+  "race",
+  "brthwt",
+  "marbrth",
+  "age1",
+  "x1locale",
+  "x1region",
+  "lang1",
+  "hhtot1",
+  "par1age1",
+  "par2age1",
+  "faminc2",
+  "pared2",
+  "parocc1",
+  "par1emp1",
+  "par2emp1",
+  "wichh1",
+  "fstmp1",
+  "tanf1",
+  "married1",
+  "hhprnt1", 
+  "pprctnm1",
+  "preadbk1",
+  "p1exp1",
+  "extrn1",
+  "intrn1",
+  "mtvt1",
+  "cooper1",
+  "attn1",
+  "hlthscale1",
+  "nhpovrt1",
+  "nhlesshs1",
+  "nhcolgrd1",
+  "nhfemhd1",
+  "nhunemprt1",
+  "nhshrwht1")
+
+vars.out<-c(
+  "rdtheta6",
+  "rdtheta7",
+  "rdtheta8",
+  "rdtheta9",
+  "mththeta6",
+  "mththeta7",
+  "mththeta8",
+  "mththeta9")
+
+vars.schl.com <- c(
+  "sblk4",
+  "stotell4",
+  "sfrlnch4",
+  "sgif4",
+  "shspnc4",
+  "sspced4",
+  "swht4",
+  "pgender4",
+  "prace4",
+  "tgender4",
+  "trace4")
+
+vars.schl.res <- c(
+  "strg_pp_4",
+  "ccd_dstr_exppp4",
+  "start_pp_4",
+  "stesl_pp_4",
+  "stgft_pp_4",
+  "stgym_pp_4",
+  "stcmp_pp_4",
+  "stlib_pp_4",
+  "stnrs_pp_4",
+  "stpar_pp_4",
+  "pyrspr4",
+  "pyrstch4",
+  "stfpsy_pp_4",
+  "stsp_pp_4",
+  "tyrsch4",
+  "sttrn4",
+  "tyrstch4",
+  "ped4",
+  "sartok4",
+  "saudok4",
+  "scafeok4",
+  "sclssok4",
+  "scompok4",
+  "sgymok4",
+  "slibok4",
+  "smultok4",
+  "smusok4",
+  "splayok4",
+  "sfnddc4",
+  "shighgrd4",
+  "slowgrd4",
+  "sstffdec4",
+  "sstfffrz4",
+  "sstffinc4",
+  "strnsl4",
+  "stype4",
+  "syrrnd4",
+  "tcrt4",
+  "tnexm4",
+  "ted4")
+
+vars.schl.ins <- c(
+  "tevlbhv4",
+  "tevlcoop4",
+  "tevldir4",
+  "tevleff4",
+  "tevlimp4",
+  "tevlpart4",
+  "tevlclss4",
+  "tevlstd4",
+  "tevlprj4",
+  "tevlqz4",
+  "tevlwrksh4",
+  "tevlwrksa4",
+  "thw4",
+  "a4usebsl4",
+  "a4uselev4",
+  "a4usenew4",
+  "a4usekit4",
+  "a4usecmp4",
+  "a4usetrd4",
+  "a4useoth4",
+  "a4useman4",
+  "a4usebgbk4",
+  "a4usedecb4",
+  "a4useaubk4",
+  "a4useanth4",
+  "a4mainid4",
+  "a4retell4",
+  "a4deschar4",
+  "a4senses4",
+  "a4whotell4",
+  "a4maintext4",
+  "a4reassup4",
+  "a4simdiff4",
+  "a4ficnonf4",
+  "a4cmpxinf4",
+  "a4cmpxpro4",
+  "a4segword4",
+  "a4manpho4",
+  "a4sndwrd4",
+  "a4irregwd4",
+  "a4paceint4",
+  "a4rdaccr4",
+  "a4useglos4",
+  "a4senctxt4",
+  "a4charplot4",
+  "a4gencsp4",
+  "a4predict4",
+  "a4opinion4",
+  "a4infpiec4",
+  "a4narrtv4",
+  "a4cnt20qty4",
+  "a4relqty4",
+  "a4slvadsb4",
+  "a4slvadd34",
+  "a4ctadsub4",
+  "a4eqlsign4",
+  "a4sidequa4",
+  "a4slvuknm4",
+  "a4cnt1204",
+  "a4nmrl1204",
+  "a4numqty4",
+  "a4tenones4",
+  "a4relsym4",
+  "a4addto1004",
+  "a4find104",
+  "a4skipcnt4",
+  "a4arr3obj4",
+  "a4lng2by34",
+  "a4lngmult4",
+  "a4meatool4",
+  "a4estlng4",
+  "a4telltime4",
+  "a4wrttime4",
+  "a4slvcoin4",
+  "a4drwgrph4",
+  "a4ansgrph4",
+  "a4attrshp4",
+  "a4dimcomp4",
+  "a4parteql4",
+  "a4triquad4",
+  "tord4",
+  "tomth4",
+  "ttrd4",
+  "ttmth4",
+  "ttsgrp4",
+  "ttlgrp4",
+  "ttindv4",
+  "ttpeer4",
+  "tevltst4",
+  "tachrd4",
+  "tachmth4")
+
+vars.schl.cli <- c(
+  "saenc4",
+  "sapri4",
+  "sprnpar4",
+  "tbhvr4",
+  "sdsrd4",
+  "sspprt4",
+  "sacns4",
+  "sblly4",
+  "scnfl4",
+  "sthft4",
+  "sptcnf4",
+  "spsupp4",
+  "tacpt4",
+  "tlstd4",
+  "tenjy4",
+  "tmkdff4",
+  "tideas4",
+  "tppwrk4",
+  "tstfrec4",
+  "tmssn4",
+  "tchstch4",
+  "sattnd4",
+  "ststinf4",
+  "srptcrd4")
+
+vars.schl.efx <- c(
+  "rdvaladd",
+  "mtvaladd")
+
+vars.schl.all <- c(
+  vars.schl.com, 
+  vars.schl.res, 
+  vars.schl.ins, 
+  vars.schl.cli, 
+  vars.schl.efx)
+
+##### IMPUTE MISSING DATA #####
+eclsk<-as.data.frame(eclsk[,c(vars.meta, vars.base, vars.out, vars.schl.all)])
+eclsk.mi.vars<-eclsk[,-which(names(eclsk) %in% c(vars.meta))]
+
+eclsk.mi<-imp.rfnode.cond(eclsk.mi.vars, num.imp=nmi, min.node.size=10, print.flag=TRUE, seed=60637)
+
+eclsk$minum<-0
+for (i in 1:nmi) {
+  mi<-complete(eclsk.mi,action=i)
+  mi_join<-data.frame(eclsk[which(eclsk$minum==0),vars.meta],mi)
+  mi_join$minum<-i
+  eclsk<-rbind(eclsk,mi_join)
+  }
+
+table(eclsk$minum)
+
+##### SAVE IMPUTED DATA TO R #####
+save(eclsk,file="C:\\Users\\Geoffrey Wodtke\\Desktop\\projects\\nhood_schl_gaps\\data\\eclsk11\\v07_eclsk11_mi.RData")
+
+##### SAVE IMPUTED DATA TO STATA #####
+eclsk.to.stata <- eclsk 
+
+for(colname in names(eclsk.to.stata)) {
+  if (is.character(eclsk.to.stata[[colname]])) {
+    eclsk.to.stata[[colname]] <- as.factor(eclsk.to.stata[[colname]])
+  }
+}
+
+write.dta(eclsk.to.stata,"C:\\Users\\Geoffrey Wodtke\\Desktop\\projects\\nhood_schl_gaps\\data\\eclsk11\\v07_eclsk11_mi.dta",version=10)
+
+##### PRINT OUTPUT #####
+sink("C:\\Users\\Geoffrey Wodtke\\Desktop\\projects\\nhood_schl_gaps\\programs\\_LOGS\\07_create_v07_eclsk11_mi_log.txt")
+
+print("Original Data \n")
+summary(eclsk[which(eclsk$minum==0),])
+
+print("MI Data \n")
+summary(eclsk[which(eclsk$minum!=0),])
+
+print(startTime)
+print(Sys.time())
+
+sink()
+
