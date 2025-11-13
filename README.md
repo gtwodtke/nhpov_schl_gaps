@@ -25,4 +25,4 @@ Once these data files have been obtained, the user will need to:
 
 1. install the required Stata and R packages documented within the replication code
 2. appropriately update the directory paths in all Stata do files and R scripts
-3. run _master_do_file.do
+3. run _master.do
