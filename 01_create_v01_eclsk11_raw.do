@@ -12,7 +12,6 @@ log using "${log_directory}01_create_v01_eclsk11_raw.log", replace ;
 
 /*****************************************
 PROGRAM NAME: 01_create_v01_eclsk11_raw.do
-AUTHOR: KW/GW
 PURPOSE: Read in raw data from ecls-k 2011
 ******************************************/
 
@@ -5070,3 +5069,4 @@ log close ;
    
    
    
+
