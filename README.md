@@ -10,7 +10,10 @@ https://nces.ed.gov/pubsearch/licenses.asp for the ECLS-K; and
 
 https://geolytics.com/neighborhood-change-database-2010 for the NCDB
 
-The specific files/extracts used from these sources are documented within the replication code.
+The specific data files/extracts used from these sources are documented within the replication code. They include:
+
+childK5.dat
+NCDB PLACEHOLDER
 
 Once these data files have been obtained, the user will need to:
 
