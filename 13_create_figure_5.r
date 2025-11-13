@@ -2,7 +2,6 @@
 ################################################
 ##                                            ##
 ## PROGRAM NAME: 13_create_figure_5           ##
-## AUTHOR: GW                                 ##
 ##                                            ##
 ## PURPOSE: create density plot for school    ##
 ##          effectiveness (value-added)       ##

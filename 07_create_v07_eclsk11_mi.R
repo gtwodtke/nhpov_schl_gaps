@@ -2,7 +2,6 @@
 ################################################
 ##                                            ##
 ## PROGRAM NAME: 07_create_v07_eclsk11_mi.R   ##
-## AUTHOR: KW/GW                              ##
 ## PURPOSE: multiply impute missing data      ##
 ##                                            ##
 ################################################

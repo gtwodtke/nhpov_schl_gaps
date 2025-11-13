@@ -5,7 +5,6 @@ wtd.mean <- Hmisc::wtd.mean
 wtd.quantile <- Hmisc::wtd.quantile
 recode <- dplyr::recode
 
-
 wtd_rank <- function (x, weights = NULL, normwt = FALSE, na.rm = TRUE) {
   if (!length(weights)) 
     return(rank(x, na.last = if (na.rm) NA else TRUE))

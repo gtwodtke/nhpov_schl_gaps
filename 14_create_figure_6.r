@@ -2,7 +2,6 @@
 ################################################
 ##                                            ##
 ## PROGRAM NAME: 14_create_figure_6           ##
-## AUTHOR: GW                                 ##
 ##                                            ##
 ## PURPOSE: create bar chart with results     ##
 ##          of descriptive decomposition      ##

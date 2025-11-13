@@ -2,7 +2,6 @@
 #################################################
 ##                                             ##
 ## PROGRAM NAME: 36_create_table_H1            ##
-## AUTHOR: GW                                  ##
 ##                                             ##
 ## PURPOSE: create table of estimates for the  ##
 ##          disparity eliminated among boys    ##

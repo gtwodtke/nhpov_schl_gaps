@@ -2,7 +2,6 @@
 #################################################
 ##                                             ##
 ## PROGRAM NAME: 15_create_table_1             ##
-## AUTHOR: GW                                  ##
 ##                                             ##
 ## PURPOSE: create table of estimates for the  ##
 ##          disparity eliminated               ##

@@ -9,7 +9,6 @@ log using "${log_directory}06_create_v06_eclsk11_si.log", replace
 
 /****************************************************
 PROGRAM NAME: 06_create_v06_eclsk11_si.do
-AUTHOR: KW/GW
 PURPOSE: single imputation for select school measures
 *****************************************************/
 

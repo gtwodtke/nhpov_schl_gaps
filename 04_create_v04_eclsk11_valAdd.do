@@ -9,7 +9,6 @@ log using "${log_directory}04_create_v04_eclsk11_valAdd.log", replace
 
 /*********************************************
 PROGRAM NAME: 04_create_v04_eclsk11_valAdd.do
-AUTHOR: KW/GW
 PURPOSE: Generate school value-added estimates
 **********************************************/
 

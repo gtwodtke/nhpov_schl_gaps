@@ -9,7 +9,6 @@ log using "${log_directory}20_create_table_B1.log", replace
 
 /****************************************************
 PROGRAM NAME: 20_create_table_B1.do
-AUTHOR: GW
 PURPOSE: compute school descriptives by nhood poverty
 *****************************************************/
 

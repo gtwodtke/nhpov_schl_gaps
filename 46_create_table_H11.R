@@ -2,7 +2,6 @@
 #################################################
 ##                                             ##
 ## PROGRAM NAME: 46_create_table_H11           ##
-## AUTHOR: GW                                  ##
 ##                                             ##
 ## PURPOSE: create table of estimates for the  ##
 ##          disparity eliminated among         ##

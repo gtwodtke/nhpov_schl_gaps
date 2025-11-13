@@ -2,7 +2,6 @@
 #################################################
 ##                                             ##
 ## PROGRAM NAME: 19_create_table_A1            ##
-## AUTHOR: GW                                  ##
 ##                                             ##
 ## PURPOSE: create table of estimates for the  ##
 ##          disparity eliminated based on      ##

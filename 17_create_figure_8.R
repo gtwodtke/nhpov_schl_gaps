@@ -2,7 +2,6 @@
 ################################################
 ##                                            ##
 ## PROGRAM NAME: 17_create_figure_8           ##
-## AUTHOR: GW                                 ##
 ## DESCRIPTION:                               ##
 ##                                            ##
 ##  create plot of std diffs against          ##

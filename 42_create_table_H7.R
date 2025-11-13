@@ -2,7 +2,6 @@
 #################################################
 ##                                             ##
 ## PROGRAM NAME: 42_create_table_H7            ##
-## AUTHOR: GW                                  ##
 ##                                             ##
 ## PURPOSE: create table of estimates for the  ##
 ##          disparity eliminated among lower   ##

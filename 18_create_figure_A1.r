@@ -2,7 +2,6 @@
 ################################################
 ##                                            ##
 ## PROGRAM NAME: 18_create_figure_A1          ##
-## AUTHOR: GW                                 ##
 ##                                            ##
 ## PURPOSE: create bar chart with results     ##
 ##          of descriptive decomposition      ##

@@ -9,7 +9,6 @@ log using "${log_directory}03_create_v03_eclsk11_ccd.log", replace
 
 /*************************************************************
 PROGRAM NAME: 03_create_v03_eclsk11_ccd.do
-AUTHOR: KW/GW
 PURPOSE: Merge ECLS-K with selected variables from CCD and PSS
 **************************************************************/
 

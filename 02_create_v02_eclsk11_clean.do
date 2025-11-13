@@ -9,7 +9,6 @@ log using "${log_directory}02_create_v02_eclsk11_clean.log", replace
 
 /*******************************************
 PROGRAM NAME: 02_create_v02_eclsk11_clean.do
-AUTHOR: KW/GW
 PURPOSE: clean raw ECLS-K 2011 data
 ********************************************/
 

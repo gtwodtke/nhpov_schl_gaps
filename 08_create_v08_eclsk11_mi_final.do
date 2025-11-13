@@ -9,7 +9,6 @@ log using "${log_directory}08_create_v08_eclsk11_mi_final.log", replace
 
 /*******************************************************
 PROGRAM NAME: 08_create_v08_eclsk11_mi_final.do
-AUTHOR: KW/GW
 PURPOSE: Re-label all variables and one-hot code catvars
 ********************************************************/
 

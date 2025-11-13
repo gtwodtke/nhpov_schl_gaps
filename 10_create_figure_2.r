@@ -2,7 +2,6 @@
 ################################################
 ##                                            ##
 ## PROGRAM NAME: 10_create_figure_2           ##
-## AUTHOR: KW/GW                              ##
 ##                                            ##
 ## PURPOSE: create dot-whisker plot for       ##
 ##          observed gaps in school           ##

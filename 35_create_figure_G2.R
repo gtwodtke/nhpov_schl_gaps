@@ -3,7 +3,7 @@
 ##                                             ##
 ## PROGRAM NAME: 35_create_figure_G2           ##
 ##                                             ##
-## PURPOSE: create table of estimates for      ##
+## PURPOSE: create figure of estimates for     ##
 ##          post-intv gaps in math scores      ##
 ##          after marginal equalization of     ##
 ##          schl characteristics               ##

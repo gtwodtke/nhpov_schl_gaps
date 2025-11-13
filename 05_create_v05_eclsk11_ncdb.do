@@ -9,7 +9,6 @@ log using "${log_directory}05_create_v05_eclsk11_ncdb.log", replace
 
 /******************************************************
 PROGRAM NAME: 05_create_eclsk11_ncdb.do
-AUTHOR: KW/GW
 PURPOSE: Merge ECLS-K with selected variables from NCDB
 *******************************************************/
 

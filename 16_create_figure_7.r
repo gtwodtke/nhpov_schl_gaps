@@ -2,7 +2,6 @@
 ################################################
 ##                                            ##
 ## PROGRAM NAME: 16_create_figure_7           ##
-## AUTHOR: GW                                 ##
 ##                                            ##
 ## PURPOSE: create plot with bias-adjusted    ##
 ##          estimates of the disparity        ##
