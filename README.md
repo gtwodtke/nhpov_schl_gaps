@@ -12,9 +12,9 @@ The rest of the data on which this analysis is based are restricted-access or pr
 
 Researchers interested in obtaining these data may follow the procedures outlined at:
 
-https://nces.ed.gov/pubsearch/licenses.asp for the ECLS-K; and
+  - https://nces.ed.gov/pubsearch/licenses.asp for the ECLS-K; and
 
-https://geolytics.com/neighborhood-change-database-2010 for the NCDB.
+  - https://geolytics.com/neighborhood-change-database-2010 for the NCDB.
 
 The specific data files/extracts used from these sources are documented within the replication code. They include:
 
